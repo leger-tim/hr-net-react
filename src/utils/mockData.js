@@ -13,7 +13,7 @@ export function generateMockEmployees() {
         state: "MA",
         zipCode: "52921-9627",
       },
-      department: "Toys",
+      department: "Engineering",
     },
     {
       firstName: "John",
@@ -26,7 +26,7 @@ export function generateMockEmployees() {
         state: "IL",
         zipCode: "62704",
       },
-      department: "Electronics",
+      department: "Sales",
     },
     // Ajoutez d'autres employés ici
   ];
