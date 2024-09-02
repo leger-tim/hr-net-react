@@ -97,7 +97,7 @@ fieldset label {
   align-self: flex-start; /* Align labels to the start for readability */
 }
 
-.modal {
+/* .modal {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -115,7 +115,7 @@ fieldset label {
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .table {
   width: 100%;

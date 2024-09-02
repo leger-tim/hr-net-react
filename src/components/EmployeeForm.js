@@ -7,7 +7,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { addEmployee } from "../store/actions";
 import { Link } from "react-router-dom";
 import HomeIcon from "../assets/home-icon.svg"; // Assurez-vous que le chemin d'importation de l'icône est correct
-import Modal from "./Modal"; // Importer le composant Modal
+import Modal from "test-modal-again";
 import "../App.css"; // Assurez-vous que le CSS est bien importé
 
 // Définition des options d'état et de département
@@ -80,6 +80,7 @@ const departmentOptions = [
   { value: "Human Resources", label: "Human Resources" },
   { value: "Legal", label: "Legal" },
 ];
+
 const EmployeeForm = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -121,6 +122,7 @@ const EmployeeForm = () => {
     increaseMonth,
     prevMonthButtonDisabled,
     nextMonthButtonDisabled,
+    onSetToday, // Ajoutez une nouvelle prop pour le bouton "Today"
   }) => (
     <div
       style={{
@@ -172,8 +174,7 @@ const EmployeeForm = () => {
         type="button"
         onClick={() => {
           const today = new Date();
-          setBirthDate(today);
-          setStartDate(today);
+          onSetToday(today);
           changeMonth(today.getMonth());
           changeYear(today.getFullYear());
         }}
@@ -183,6 +184,16 @@ const EmployeeForm = () => {
       </button>
     </div>
   );
+
+  // Fonction pour définir la date d'aujourd'hui pour la date de naissance
+  const setTodayBirthDate = (today) => {
+    setBirthDate(today);
+  };
+
+  // Fonction pour définir la date d'aujourd'hui pour la date de début
+  const setTodayStartDate = (today) => {
+    setStartDate(today);
+  };
 
   // Fonction de soumission du formulaire
   const handleSubmit = () => {
@@ -257,7 +268,9 @@ const EmployeeForm = () => {
             onChange={(date) => setBirthDate(date)}
             className="form-input"
             dateFormat="MM/dd/yyyy"
-            renderCustomHeader={renderCustomHeader} // Ajout de l'en-tête personnalisé
+            renderCustomHeader={(props) =>
+              renderCustomHeader({ ...props, onSetToday: setTodayBirthDate })
+            }
           />
           {errors.birthDate && (
             <span className="error">{errors.birthDate}</span>
@@ -272,7 +285,9 @@ const EmployeeForm = () => {
             onChange={(date) => setStartDate(date)}
             className="form-input"
             dateFormat="MM/dd/yyyy"
-            renderCustomHeader={renderCustomHeader} // Ajout de l'en-tête personnalisé
+            renderCustomHeader={(props) =>
+              renderCustomHeader({ ...props, onSetToday: setTodayStartDate })
+            }
           />
           {errors.startDate && (
             <span className="error">{errors.startDate}</span>

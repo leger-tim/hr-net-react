@@ -17,6 +17,7 @@
     "react-select": "^5.8.0",
     "redux": "^5.0.1",
     "styled-components": "^6.1.12",
+    "test-modal-again": "^1.0.1",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -42,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-jsx": "^7.24.7",
+    "@babel/preset-react": "^7.24.7"
   }
 }
